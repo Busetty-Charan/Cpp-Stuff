@@ -21,7 +21,6 @@ public:
     {
         feet = Feet;
         inches = Inches;
-        obj_count++;
     }
 
     void setParams(double &Feet, double &Inches)
