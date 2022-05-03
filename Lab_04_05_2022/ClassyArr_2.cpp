@@ -73,7 +73,9 @@ int main(int argc, char const *argv[])
     cout << "Enter the number of English distances you would like to enter : ";
     cin >> n;
 
-    Distance disarray[n], avg;
+    double hmm = 1;
+
+    Distance disarray[n], avg(hmm, hmm);
 
     for (int i = 0; i < n; i++)
     {
