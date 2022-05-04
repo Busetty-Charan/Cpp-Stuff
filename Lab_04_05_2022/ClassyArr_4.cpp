@@ -44,15 +44,72 @@ int Date::getParam(char p)
 
 bool Date::validateDate(Date &obj)
 {
-    if (obj.getParam('d') < 1 ||
-        (obj.getParam('d') > 30 && ((obj.getParam('m') % 2 == 0) && obj.getParam('m') != 2)) ||
-        (obj.getParam('d') > 31 && ((obj.getParam('m') % 2 != 0) || obj.getParam('m') == 8)) ||
-        ((obj.getParam('d') > 28 && ((obj.getParam('m') == 2 && obj.getParam('y') / 4 != 0))) || (obj.getParam('d') > 29 && (obj.getParam('m') == 2 && (obj.getParam('y') / 4 == 0)))))
+    if (obj.getParam('y') >= 1000 && obj.getParam('y') <= 3000)
     {
-        return false;
+        if (obj.getParam('m') >= 1 && obj.getParam('m') <= 12)
+        {
+            if (obj.getParam('m') == 7)
+            {
+                if (obj.getParam('d') > 0 && obj.getParam('d') < 32)\
+                {
+                    return true;
+                }
+            }
+            else if (obj.getParam('m') == 2)
+            {
+                if (((obj.getParam('y') % 4 == 0) && (obj.getParam('y') % 100 != 0)) || (obj.getParam('y') % 400 == 0))
+                {
+                    if (obj.getParam('d') > 0 && obj.getParam('d') < 30)
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (obj.getParam('d') > 0 && obj.getParam('d') < 29)
+                    {
+                        return true;
+                    }
+                }
+            }
+            else if (obj.getParam('m') < 7 && obj.getParam('m') != 2)
+            {
+                if (obj.getParam('m') % 2 == 0)
+                {
+                    if (obj.getParam('d') > 0 && obj.getParam('d') < 31)
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (obj.getParam('d') > 0 && obj.getParam('d') < 32)
+                    {
+                        return true;
+                    }
+                }
+            }
+            else if (obj.getParam('m') > 7)
+            {
+                if (obj.getParam('m') % 2 == 0)
+                {
+                    if (obj.getParam('d') > 0 && obj.getParam('d') < 32)
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (obj.getParam('d') > 0 && obj.getParam('d') < 31)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
     }
-
-    return true;
+    
+    return false;
 }
 
 int main(int argc, char const *argv[])
