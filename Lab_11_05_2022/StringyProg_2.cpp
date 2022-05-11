@@ -50,5 +50,7 @@ int main()
 
     cout << result;
 
+    free(result);
+
     return 0;
 }
