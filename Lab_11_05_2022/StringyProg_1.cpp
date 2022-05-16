@@ -20,17 +20,17 @@ public:
 
 char *String_manip::slice(int start, int end, int jump = 1)
 {
-    int strlen = inarr.length();
+    int strle = inarr.length();
     int count = 0;
     strarr = (char *)calloc(1, sizeof(char));
 
-    for (int i = 0; inarr[i] != '\0';)
+    for (int i = start; inarr[i] != '\0';)
     {
         strarr = (char *)realloc(strarr, (count + 2) * sizeof(char));
         *(strarr + count) = inarr[i];
         i += jump;
 
-        if (i > strlen || i == end)
+        if (i > strle || i >= end - 1)
         {
             break;
         }
@@ -49,7 +49,7 @@ int main()
     String_manip man(in);
     char *result;
 
-    result = man.slice(0, 7, 2);
+    result = man.slice(0, 6, 2);
 
     cout << result;
 
