@@ -157,13 +157,10 @@ Salary::Salary(int income)
 int main(int argc, char const *argv[])
 {
     Salary emp(24000);
-    Employee *override = &emp;
 
-    override->setFields("123", "TZ", "HR");
+    emp.Employee::setFields("123", "TZ", "HR");
     emp.setFields(1, 1, 5);
     emp.dispDetails();
-
-    free(override);
 
     return 0;
 }
